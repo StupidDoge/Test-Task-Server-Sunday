@@ -44,7 +44,7 @@ public class ImagesLoader : MonoBehaviour
             }
             else
             {
-                Debug.Log("Server connection failed: " + webRequest.error);
+                Debug.LogError("Server connection failed: " + webRequest.error);
             }
         }
     }
