@@ -29,6 +29,6 @@ public class LoadingCanvas : MonoBehaviour
         }
 
         _counterValue = 100;
-        EventBus.OnSceneLoadTriggered?.Invoke(_gallerySceneIndex);
+        gameObject.SetActive(false);
     }
 }

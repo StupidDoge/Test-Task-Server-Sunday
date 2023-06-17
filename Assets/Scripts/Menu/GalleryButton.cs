@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class GalleryButton : MonoBehaviour
 {
-    [SerializeField] private LoadingCanvas _loadingCanvas;
+    [SerializeField] private int _gallerySceneIndex;
 
     private Button _button;
 
@@ -11,6 +11,6 @@ public class GalleryButton : MonoBehaviour
     {
         _button = GetComponent<Button>();
 
-        _button.onClick.AddListener(() => _loadingCanvas.gameObject.SetActive(true));
+        _button.onClick.AddListener(() => EventBus.OnSceneLoadTriggered?.Invoke(_gallerySceneIndex));
     }
 }
