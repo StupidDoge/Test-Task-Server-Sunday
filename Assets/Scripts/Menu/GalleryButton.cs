@@ -11,6 +11,6 @@ public class GalleryButton : MonoBehaviour
     {
         _button = GetComponent<Button>();
 
-        _button.onClick.AddListener(() => EventBus.OnSceneLoadTriggered?.Invoke(_gallerySceneIndex));
+        _button.onClick.AddListener(() => EventBus.OnSceneLoadTriggered?.Invoke(Constants.GALLERY_SCENE_ID));
     }
 }
