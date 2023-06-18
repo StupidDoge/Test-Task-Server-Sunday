@@ -79,6 +79,6 @@ public class ImagesLoader : MonoBehaviour
     private void SpawnImage(int imageId)
     {
         ImageObject imageObject = Instantiate(_imageObject, _imagesParent);
-        imageObject.SetImageId(imageId);
+        imageObject.LoadImage(imageId);
     }
 }

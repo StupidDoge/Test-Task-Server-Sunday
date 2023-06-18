@@ -3,18 +3,30 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
-    private void OnEnable()
+    public static SceneLoader Instance { get; private set; }
+    public int ImageIndex { get; private set; }
+
+    private void Awake()
     {
-        EventBus.OnSceneLoadTriggered += LoadSceneAsync;
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
-    private void OnDisable()
+    public void LoadSceneAsync(int sceneIndex)
     {
-        EventBus.OnSceneLoadTriggered -= LoadSceneAsync;
+        SceneManager.LoadSceneAsync(sceneIndex);
     }
 
-    private void LoadSceneAsync(int sceneIndex)
+    public void LoadSceneWithImageIndexAsync(int sceneIndex, int imageIndex)
     {
+        ImageIndex = imageIndex;
         SceneManager.LoadSceneAsync(sceneIndex);
     }
 }

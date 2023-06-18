@@ -1,18 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ViewLoader : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private Image _image;
 
-    // Update is called once per frame
-    void Update()
+    private void Awake()
     {
-        
+        StartCoroutine(ServerImageLoader.LoadImageFromServer(_image, SceneLoader.Instance.ImageIndex));
     }
 }

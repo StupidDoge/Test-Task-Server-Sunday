@@ -16,7 +16,7 @@ public class ImageObject : MonoBehaviour
         _button.onClick.AddListener(Click);
     }
 
-    public void SetImageId(int id)
+    public void LoadImage(int id)
     {
         _id = id;
         StartCoroutine(ServerImageLoader.LoadImageFromServer(_rawImage, _id));
@@ -24,6 +24,6 @@ public class ImageObject : MonoBehaviour
 
     private void Click()
     {
-        EventBus.OnSceneLoadTriggered?.Invoke(Constants.VIEW_SCENE_ID);
+        SceneLoader.Instance.LoadSceneWithImageIndexAsync(Constants.VIEW_SCENE_ID, _id);
     }
 }

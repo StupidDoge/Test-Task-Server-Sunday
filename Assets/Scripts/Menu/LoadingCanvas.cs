@@ -4,7 +4,6 @@ using UnityEngine;
 public class LoadingCanvas : MonoBehaviour
 {
     [SerializeField] private float _loadingTime;
-    [SerializeField] private int _gallerySceneIndex;
     [SerializeField] private LoadingBar _loadingBar;
 
     private float _currentTime;
