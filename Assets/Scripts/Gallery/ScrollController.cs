@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
@@ -11,7 +10,7 @@ public class ScrollController : MonoBehaviour
     [SerializeField] private float _debounceDelay = 0.5f;
 
     private ScrollRect _scrollRect;
-    private bool isDebouncing = false;
+    private bool _isDebouncing = false;
 
     private void Start()
     {
@@ -21,9 +20,9 @@ public class ScrollController : MonoBehaviour
 
     private void OnScroll(Vector2 scrollPosition)
     {
-        if (!isDebouncing && _scrollRect.verticalNormalizedPosition <= 0f)
+        if (!_isDebouncing && _scrollRect.verticalNormalizedPosition <= 0f)
         {
-            isDebouncing = true;
+            _isDebouncing = true;
             StartCoroutine(DebounceDelay());
             OnUserScrolledDown?.Invoke();
         }
@@ -32,6 +31,6 @@ public class ScrollController : MonoBehaviour
     private IEnumerator DebounceDelay()
     {
         yield return new WaitForSeconds(_debounceDelay);
-        isDebouncing = false;
+        _isDebouncing = false;
     }
 }

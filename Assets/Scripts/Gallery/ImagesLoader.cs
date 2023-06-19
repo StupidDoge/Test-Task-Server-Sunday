@@ -16,7 +16,6 @@ public class ImagesLoader : MonoBehaviour
     private void Start()
     {
         StartCoroutine(GetImagesCount());
-        ScrollController.OnUserScrolledDown += SpawnPortionOfImages;
     }
 
     private void OnDestroy()
@@ -47,6 +46,7 @@ public class ImagesLoader : MonoBehaviour
                 }
 
                 SpawnPortionOfImages();
+                ScrollController.OnUserScrolledDown += SpawnPortionOfImages;
             }
             else
             {
